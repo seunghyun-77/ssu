@@ -38,3 +38,7 @@ validation are documented in
 Axis meanings, units, legends, overlap corrections, and result interpretations
 for all 14 figures are documented in
 `experiment_output_project/FIGURE_AXIS_AND_INTERPRETATION_KO.md`.
+
+Definitions, units, conclusions, and interpretation limits for statistical
+tables 93--109 are documented in
+`experiment_output_project/STATISTICAL_RESULTS_INTERPRETATION_KO.md`.

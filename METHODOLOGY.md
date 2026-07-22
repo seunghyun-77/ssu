@@ -102,3 +102,12 @@ starts, discounted candidate-project gross revenue, and the residual modelled
 cost-and-penalty burden. Shared workforce, idle, shortage, and marketing costs
 are not arbitrarily allocated to individual projects; project-level revenue is
 therefore described as gross contribution rather than causal net profit.
+
+## Checkpoint win-rate definition
+
+At months 12, 24, 36, 48, and 60, the checkpoint win rate is wins divided by
+proposals whose win-confirm month has occurred by that checkpoint. Proposals
+that remain unresolved are excluded from both numerator and denominator. This
+prevents pending proposals from being incorrectly counted as losses. The final
+run-level win rate remains total wins divided by total proposals over the full
+horizon.
