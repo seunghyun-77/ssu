@@ -1,0 +1,11 @@
+﻿validation_type,fold,holdout_scenario_count,training_selected_policy,holdout_selected_policy_mean,holdout_rank,holdout_oracle_policy,oracle_regret,difference_vs_p0
+stratified_10_fold_scenario_holdout,1,7,P8,156150.033425,1,P8,0.000000,2028.395865
+stratified_10_fold_scenario_holdout,2,7,P8,153246.271057,1,P8,0.000000,1474.074171
+stratified_10_fold_scenario_holdout,3,7,P8,151632.234599,1,P8,0.000000,1656.414288
+stratified_10_fold_scenario_holdout,4,7,P8,156347.027240,1,P8,0.000000,3411.973384
+stratified_10_fold_scenario_holdout,5,7,P8,150797.586038,1,P8,0.000000,2887.846238
+stratified_10_fold_scenario_holdout,6,7,P8,155834.938329,1,P8,0.000000,1432.401103
+stratified_10_fold_scenario_holdout,7,7,P8,154954.863137,2,P1,38.616557,749.772569
+stratified_10_fold_scenario_holdout,8,7,P8,156116.524140,1,P8,0.000000,1589.556637
+stratified_10_fold_scenario_holdout,9,7,P8,150288.512155,1,P8,0.000000,1699.796971
+stratified_10_fold_scenario_holdout,10,7,P8,153449.987152,1,P8,0.000000,3004.385259

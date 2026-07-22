@@ -1,0 +1,16 @@
+build/
+build-clang/
+build-msvc/
+experiment_output/
+generated_data/*.csv
+experiment_output_base/90_OUTPUT_POLICY_SCENARIO.csv
+experiment_output_base/91_OUTPUT_MONTHLY_RESOURCE.csv
+experiment_output_base/92_OUTPUT_CHECKPOINT.csv
+experiment_output_base/98_OUTPUT_RUN_DIAGNOSTIC.csv
+experiment_output_project/90_OUTPUT_POLICY_SCENARIO.csv
+experiment_output_project/91_OUTPUT_MONTHLY_RESOURCE.csv
+experiment_output_project/92_OUTPUT_CHECKPOINT.csv
+experiment_output_project/98_OUTPUT_RUN_DIAGNOSTIC.csv
+experiment_output_project/99_OUTPUT_PROJECT_DECISION.csv
+__pycache__/
+*.pyc

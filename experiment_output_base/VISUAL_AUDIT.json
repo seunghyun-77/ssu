@@ -1,0 +1,34 @@
+{
+  "generator": "dependency-free SVG",
+  "figure_count": 7,
+  "figures": {
+    "01_CUMULATIVE_PROFIT.svg": {
+      "valid_xml": true,
+      "sha256": "1ac04d9e4d83cfa179a18c97ba8f398053f66d9b51e2f0f200f9eb7123e3ba36"
+    },
+    "02_OUTCOME_DISTRIBUTION.svg": {
+      "valid_xml": true,
+      "sha256": "8c54edbbe8cb5c183bc4383a09a9ea7a680d931331b78113bfe03d70f8c5b8c6"
+    },
+    "03_SCENARIO_POLICY_HEATMAP.svg": {
+      "valid_xml": true,
+      "sha256": "7618b83a197905daf010f666f3305983380d57d2babd9d3d39c0b5f067bc94f0"
+    },
+    "04_RISK_RETURN_MAP.svg": {
+      "valid_xml": true,
+      "sha256": "c7532886600cfd061b5aeb49cffcb3a0b1e6e9883f349c7ed7b7f61469bd2d61"
+    },
+    "05_PAIRED_EFFECT_FOREST.svg": {
+      "valid_xml": true,
+      "sha256": "875f8dd60395c97e4d3730cc27f4453348ef64dcdb9b46c09b32c42034b2f272"
+    },
+    "06_SENSITIVITY_GRID.svg": {
+      "valid_xml": true,
+      "sha256": "d3d92c66fd584ecc85a718a00b494d6b3574f04a977b028c15527e823e07519c"
+    },
+    "07_PROJECT_PORTFOLIO_MAP.svg": {
+      "valid_xml": true,
+      "sha256": "83002edb016980bcfac2a1b1c919ba660988d8a81131b137a79dfe3ccf93a01d"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "method": "scenario probabilities normalized; 20 paired CRN replications per scenario",
+  "probability_sum_input": 1.00002,
+  "files": {
+    "90_OUTPUT_POLICY_SCENARIO.csv": {
+      "lines": 14001,
+      "expected_lines": 14001,
+      "sha256": "dcc0a39e22516ce4883288a4cef734e7db7f12ce6114e43a935149fc3df45601",
+      "valid": true
+    },
+    "91_OUTPUT_MONTHLY_RESOURCE.csv": {
+      "lines": 3360001,
+      "expected_lines": 3360001,
+      "sha256": "7bbf95ff29794dd975bf1b1fcca94ca46ad3034e97fbd886e7d75896119cf228",
+      "valid": true
+    },
+    "92_OUTPUT_CHECKPOINT.csv": {
+      "lines": 70001,
+      "expected_lines": 70001,
+      "sha256": "08ae3bc91dc31b782a11f019b15d00cc822550346398d25218ce4c10ecfb1d55",
+      "valid": true
+    },
+    "93_OUTPUT_POLICY_SUMMARY.csv": {
+      "lines": 11,
+      "expected_lines": 11,
+      "sha256": "4f4ccd556a56fa71cabaa4a2a1afe0b784c432cc306dc8bb08f4fa764061e024",
+      "valid": true
+    },
+    "94_OUTPUT_RISK_SUMMARY.csv": {
+      "lines": 11,
+      "expected_lines": 11,
+      "sha256": "006fd3bf4fd39a26f74f68c6f27281e4852f43c443b0559e05bd859f1685b548",
+      "valid": true
+    },
+    "95_OUTPUT_SCENARIO_GROUP.csv": {
+      "lines": 71,
+      "expected_lines": 71,
+      "sha256": "3079b7ed0cf42b3716519d04dd2bd3254efcce37ed78877eeb00757884a84d77",
+      "valid": true
+    },
+    "96_OUTPUT_CHECKPOINT_SUMMARY.csv": {
+      "lines": 51,
+      "expected_lines": 51,
+      "sha256": "ca2040d859811d9a3f3a48d6d18be13e1403ec5cb790ea17a77b9ac1dd68a2c5",
+      "valid": true
+    },
+    "97_OUTPUT_MONTHLY_POLICY.csv": {
+      "lines": 601,
+      "expected_lines": 601,
+      "sha256": "c1bf73a4b7ae7c830cb028393a4a7126ad284b792825335e66f873f9c1d1e54d",
+      "valid": true
+    },
+    "98_OUTPUT_RUN_DIAGNOSTIC.csv": {
+      "lines": 14001,
+      "expected_lines": 14001,
+      "sha256": "63f743e6441179deb4ced0212592b8fd9c1dec1e0b3fd140bb920a1d97c9934c",
+      "valid": true
+    },
+    "100_POLICY_COMPARISON_VS_P0.csv": {
+      "lines": 11,
+      "expected_lines": 11,
+      "sha256": "fd9b291567ce82e16690009a06e1b5cc546d0fce3d6d0723e2e3aed2d330d33e",
+      "valid": true
+    }
+  }
+}

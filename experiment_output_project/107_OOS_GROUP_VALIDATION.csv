@@ -1,0 +1,8 @@
+﻿validation_type,holdout,training_selected_policy,holdout_selected_policy_mean,holdout_rank,holdout_oracle_policy,oracle_regret,difference_vs_p0
+leave_one_scenario_group_out,BASE,P8,161139.972567,1,P8,0.000000,2547.474962
+leave_one_scenario_group_out,COST_PRESSURE,P8,150106.414192,1,P8,0.000000,1776.878865
+leave_one_scenario_group_out,DELAYED_START,P8,148213.632006,1,P8,0.000000,1205.565318
+leave_one_scenario_group_out,HIGH_WIN,P8,198113.472846,1,P8,0.000000,4262.262422
+leave_one_scenario_group_out,INTERNAL_RATIO_STRESS,P8,142803.476138,1,P8,0.000000,1581.102513
+leave_one_scenario_group_out,LOW_WIN,P8,126417.461221,2,P0,397.788462,-397.788462
+leave_one_scenario_group_out,RESOURCE_SHORT,P8,150378.155118,1,P8,0.000000,2978.735921

@@ -1,0 +1,11 @@
+﻿metric,value,unit,interpretation
+five_year_incremental_objective_pv,1993.461648,KRW million,Maximum additional unmodelled implementation cost before P8 loses its P0 advantage
+relative_effect,1.312452,percent,P8 objective improvement relative to P0
+simple_annual_average,398.692330,KRW million/year,Five-year PV divided by five; not an annuity
+five_percent_equivalent_annual_value,460.439402,KRW million/year,Five-year equivalent annual value at 5 percent
+additional_external_starts,2.886429,projects/portfolio,Probability-weighted expected external-project starts
+change_internal_starts,-1.293571,projects/portfolio,Probability-weighted expected internal-project starts
+incremental_discounted_gross_revenue,2904.733669,KRW million,Candidate-project gross revenue without shared-cost allocation
+incremental_modelled_cost_and_penalty_burden,911.272021,KRW million,Gross-revenue difference less objective difference
+objective_gain_per_additional_external_start,690.632593,KRW million/project,Portfolio-level ratio; not a causal project unit profit
+paired_run_win_fraction,0.650714286,ratio,Fraction of paired runs where P8 exceeds P0

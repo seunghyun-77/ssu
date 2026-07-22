@@ -1,0 +1,18 @@
+{
+  "source_runs": 14000,
+  "reconstructed_fail_mismatches": 0,
+  "valid_failure_reconstruction": true,
+  "group_holdouts": 7,
+  "stratified_folds": 10,
+  "outputs": {
+    "105_FAILURE_DECOMPOSITION.csv": "7b786b2f680b2112fa4fab860cd7e02c2745be4473f9d70023de741581b69f4d",
+    "106_PRACTICAL_SIGNIFICANCE.csv": "a0f09063d42279b549303722f1b9fcbcc27dfe93f78998fa9e69d1e3f684d8e8",
+    "107_OOS_GROUP_VALIDATION.csv": "e9780855277cecd37b2af03f6daab901170a9308ec060a00460f2ae49fa506e6",
+    "108_OOS_STRATIFIED_FOLDS.csv": "1c1fef7b84586d63d572bfe87d01c4dcf1158785124755c6eb21a545131bf14a",
+    "109_FAILURE_THRESHOLD_SENSITIVITY.csv": "dcd88c754eaabe7a8b3cfba479f53948e5f315e11cbb36bbde2eb0891b3ce816",
+    "11_FAILURE_DECOMPOSITION.svg": "821c5f08ca73f263ec08680888995087c3726ff2fea7fcb3a883948e3c66eeea",
+    "12_PRACTICAL_EFFECT_WATERFALL.svg": "58575935647ba87fac2807c2ca30ea14da155861a5a711646945c48ae1f9ad0d",
+    "13_HELD_OUT_VALIDATION.svg": "021d39e0e8abe687692fafd7620a822ad5dd16eea79e99f63efaea5ee66ca96b",
+    "14_FAILURE_THRESHOLD_SENSITIVITY.svg": "3b875abdbbe789aaa7e19923a39cea229cbeeca1c42a16b84052a056b425d758"
+  }
+}
