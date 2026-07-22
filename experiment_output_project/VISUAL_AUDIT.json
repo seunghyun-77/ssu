@@ -1,46 +1,62 @@
 {
   "generator": "dependency-free SVG",
-  "figure_count": 7,
   "figures": {
     "01_CUMULATIVE_PROFIT.svg": {
       "valid_xml": true,
-      "sha256": "1ac04d9e4d83cfa179a18c97ba8f398053f66d9b51e2f0f200f9eb7123e3ba36"
+      "sha256": "0b2ce7ab3eea62408230cdf321de0e721beb6f05989d6103a9436714285b08c1"
     },
     "02_OUTCOME_DISTRIBUTION.svg": {
       "valid_xml": true,
-      "sha256": "8c54edbbe8cb5c183bc4383a09a9ea7a680d931331b78113bfe03d70f8c5b8c6"
+      "sha256": "f1ac6798250fd8b45aa5c39e5c54d42169b9d2c6ec296bd6e4752ed582060fc6"
     },
     "03_SCENARIO_POLICY_HEATMAP.svg": {
       "valid_xml": true,
-      "sha256": "7618b83a197905daf010f666f3305983380d57d2babd9d3d39c0b5f067bc94f0"
+      "sha256": "96cd0d1ed35afdef49d25ec01a58fc84aade1853be19c1f7ce88429dd8aab3ac"
     },
     "04_RISK_RETURN_MAP.svg": {
       "valid_xml": true,
-      "sha256": "c7532886600cfd061b5aeb49cffcb3a0b1e6e9883f349c7ed7b7f61469bd2d61"
+      "sha256": "9f6479c729be298bc26059cbf59d1a235ea366c58895f5b74f07ff0967a68515"
     },
     "05_PAIRED_EFFECT_FOREST.svg": {
       "valid_xml": true,
-      "sha256": "875f8dd60395c97e4d3730cc27f4453348ef64dcdb9b46c09b32c42034b2f272"
+      "sha256": "61ad5355d8fe583bd4da9b5dfc3474324a3c351a9f5f284c7a05fa9131387ddf"
     },
     "06_SENSITIVITY_GRID.svg": {
       "valid_xml": true,
-      "sha256": "d3d92c66fd584ecc85a718a00b494d6b3574f04a977b028c15527e823e07519c"
+      "sha256": "beb366980a5eb7c863599d96c4f4a90c92a93b18200852ad9d57c79c0d4e08a4"
     },
     "07_PROJECT_PORTFOLIO_MAP.svg": {
       "valid_xml": true,
-      "sha256": "83002edb016980bcfac2a1b1c919ba660988d8a81131b137a79dfe3ccf93a01d"
+      "sha256": "6c0961640178aca4d3bd7a63f3b8dde9815c2b991796151324a220ab65a7d079"
     },
     "08_PROJECT_START_DIFFERENCE.svg": {
       "valid_xml": true,
-      "sha256": "def4a2f221049eafc73527a0be39f89b3427800e086702738e493f9689d6cc8e"
+      "sha256": "9489a3fc86b43a3383ce6f8b7afa92a4b67e7f50c9251a18aac73bced2abee25"
     },
     "09_EXTERNAL_PROJECT_FUNNEL.svg": {
       "valid_xml": true,
-      "sha256": "26fa0e59411690c5f40db594528613cfefcc926e181c288919f21266dc76558c"
+      "sha256": "83db94e1399baf7dc1c0fd1b218a002112a4f6ab27451c2f6fffbba918ba28dc"
     },
     "10_SCENARIO_PROJECT_ACTIVATION.svg": {
       "valid_xml": true,
-      "sha256": "1720cb060e781c71c142a9dee79cf4c95d9be531c3576490f0e77f5f01098f2d"
+      "sha256": "3081e0c19c6f611597964f0ecf4ceece924152a03cd0542dd42f6c8a7e7127c9"
+    },
+    "11_FAILURE_DECOMPOSITION.svg": {
+      "valid_xml": true,
+      "sha256": "f7d95b9525b9766808e6f1df000d597063b84747e00fc1a45a5577a19f042ced"
+    },
+    "12_PRACTICAL_EFFECT_WATERFALL.svg": {
+      "valid_xml": true,
+      "sha256": "494998b6d44ad20e012e72fad99ca38bed89e1e26c42a56639f8d2cab8ab73b0"
+    },
+    "13_HELD_OUT_VALIDATION.svg": {
+      "valid_xml": true,
+      "sha256": "2b38ca1ff9309031ea778795ca9742f215262026130956243444e7643c51efc1"
+    },
+    "14_FAILURE_THRESHOLD_SENSITIVITY.svg": {
+      "valid_xml": true,
+      "sha256": "511eb0103d5bfb2aa16015952b5c65dd522aafc54237504ab262c89fa67ff6dd"
     }
-  }
+  },
+  "figure_count": 14
 }

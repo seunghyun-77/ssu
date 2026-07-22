@@ -9,7 +9,9 @@ def write(path,fields,data):
 def esc(x):return html.escape(str(x))
 def svg(title,subtitle,body,note=""):
     return f'<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620"><rect width="100%" height="100%" fill="white"/><text x="45" y="38" font-family="sans-serif" font-size="22" font-weight="bold" fill="#16222e">{esc(title)}</text><text x="45" y="62" font-family="sans-serif" font-size="13" fill="#536273">{esc(subtitle)}</text>{body}<text x="45" y="602" font-family="sans-serif" font-size="11" fill="#667585">{esc(note)}</text></svg>'
-def txt(x,y,s,size=12,anchor="middle",color="#25313c",bold=False):return f'<text x="{x:.1f}" y="{y:.1f}" font-family="sans-serif" font-size="{size}" text-anchor="{anchor}" fill="{color}" font-weight="{"bold" if bold else "normal"}">{esc(s)}</text>'
+def txt(x,y,s,size=12,anchor="middle",color="#25313c",bold=False,rotate=None):
+    transform=f' transform="rotate({rotate} {x} {y})"' if rotate is not None else ""
+    return f'<text x="{x:.1f}" y="{y:.1f}" font-family="sans-serif" font-size="{size}" text-anchor="{anchor}" fill="{color}" font-weight="{"bold" if bold else "normal"}"{transform}>{esc(s)}</text>'
 def rect(x,y,w,h,c,stroke="none"):return f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" fill="{c}" stroke="{stroke}"/>'
 def line(x1,y1,x2,y2,c="#dce2e8",w=1):return f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{c}" stroke-width="{w}"/>'
 
@@ -79,18 +81,20 @@ def main(data_dir,out_dir):
             v=float(r[key]);bw=18;xx=x-28+j*22;b+=rect(xx,520-v*410,bw,v*410,c)
     for j,(label,key,c) in enumerate(cats):b+=rect(570+j*130,82,14,14,c)+txt(590+j*130,94,label,10,"start")
     for v in (0,.25,.5,.75,1):b+=line(65,520-v*410,955,520-v*410)+txt(57,524-v*410,f"{v:.2f}",10,"end")
-    with open(os.path.join(out_dir,"11_FAILURE_DECOMPOSITION.svg"),"w",encoding="utf-8") as f:f.write(svg("Why runs are classified as failures","Inclusive component rates; components may overlap",b,"Failure is triggered by profit, cumulative shortage, or three consecutive shortage months."))
+    b+=txt(510,580,"X: Policy (P0-P9)",12,bold=True)+txt(25,315,"Y: Inclusive failure-component rate (0-1)",11,rotate=-90)
+    with open(os.path.join(out_dir,"11_FAILURE_DECOMPOSITION.svg"),"w",encoding="utf-8") as f:f.write(svg("Why runs are classified as failures","X = policy; Y = inclusive component rate (ratio); components may overlap",b,"Failure is triggered by profit, cumulative shortage, or three consecutive shortage months."))
 
     items=[("Gross revenue",gross,"#4E79A7"),("Cost/penalty burden",-residual,"#D24A4A"),("Net objective",effect,"#0B8F55")];mx=max(abs(v) for _,v,_ in items);b=line(120,480,900,480,"#7c8996",2)
     for i,(label,v,c) in enumerate(items):
         x=190+i*300;h=330*abs(v)/mx;y=480-h if v>=0 else 480;b+=rect(x-70,y,140,h,c)+txt(x,520,label,12,bold=True)+txt(x,y-10 if v>=0 else y+h+18,f"{v:+,.1f}",13,color=c,bold=True)
-    with open(os.path.join(out_dir,"12_PRACTICAL_EFFECT_WATERFALL.svg"),"w",encoding="utf-8") as f:f.write(svg("Practical meaning of the P8 advantage","Discounted five-year differences versus P0, KRW million",b,"Gross revenue less modelled cost and penalty burden equals the incremental objective."))
+    b+=txt(490,565,"X: Effect component",12,bold=True)+txt(28,300,"Y: P8 - P0 five-year discounted difference (KRW million)",11,rotate=-90)
+    with open(os.path.join(out_dir,"12_PRACTICAL_EFFECT_WATERFALL.svg"),"w",encoding="utf-8") as f:f.write(svg("Practical meaning of the P8 advantage","X = effect component; Y = discounted five-year difference versus P0 (KRW million)",b,"Gross revenue less modelled cost and penalty burden equals the incremental objective."))
 
     b="";combined=oos+folds
     for i,r in enumerate(combined):
-        y=105+i*30;v=float(r["difference_vs_p0"]);w=360*abs(v)/max(abs(float(x["difference_vs_p0"])) for x in combined);c="#0B8F55" if v>=0 else "#D24A4A";label=r["holdout"] if "holdout" in r else f'Fold {r["fold"]}';b+=txt(205,y+5,label,10,"end")+rect(500 if v>=0 else 500-w,y-8,w,16,c)+txt(510+w if v>=0 else 490-w,y+5,f"{v:+,.0f}",10,"start" if v>=0 else "end",c)
-    b+=line(500,85,500,575,"#65717d",2)
-    with open(os.path.join(out_dir,"13_HELD_OUT_VALIDATION.svg"),"w",encoding="utf-8") as f:f.write(svg("Held-out policy-selection validation","Selected-policy objective difference versus P0 in unseen holdouts",b,"Top 7 rows: held-out groups; bottom 10 rows: stratified scenario folds."))
+        y=95+i*27;v=float(r["difference_vs_p0"]);w=360*abs(v)/max(abs(float(x["difference_vs_p0"])) for x in combined);c="#0B8F55" if v>=0 else "#D24A4A";label=r["holdout"] if "holdout" in r else f'Fold {r["fold"]}';b+=txt(205,y+4,label,9,"end")+rect(500 if v>=0 else 500-w,y-7,w,14,c)+txt(510+w if v>=0 else 490-w,y+4,f"{v:+,.0f}",9,"start" if v>=0 else "end",c)
+    b+=line(500,78,500,545,"#65717d",2)+txt(500,565,"X: Held-out selected-policy objective difference vs P0 (KRW million)",11,bold=True)+txt(35,310,"Y: Held-out group / stratified fold",11,rotate=-90)
+    with open(os.path.join(out_dir,"13_HELD_OUT_VALIDATION.svg"),"w",encoding="utf-8") as f:f.write(svg("Held-out policy-selection validation","X = selected-policy difference vs P0 (KRW million); Y = unseen holdout",b,"Top 7 rows: held-out groups; bottom 10 rows: stratified scenario folds."))
 
     b="";colors={"P0":"#4E79A7","P7":"#F28E2B","P8":"#0B8F55"}
     for v in (0,.25,.5,.75,1):b+=line(90,520-v*400,930,520-v*400)+txt(78,524-v*400,f"{v:.2f}",10,"end")
@@ -101,7 +105,8 @@ def main(data_dir,out_dir):
         b+=f'<polyline points="{" ".join(f"{x},{y:.1f}" for x,y in pts)}" fill="none" stroke="{colors[pid]}" stroke-width="3"/>'
     for threshold in range(2,7):b+=txt(150+(threshold-2)*180,548,str(threshold),12,bold=True)
     for i,pid in enumerate(("P0","P7","P8")):b+=rect(650+i*80,82,14,14,colors[pid])+txt(670+i*80,94,pid,11,"start",colors[pid],True)
-    with open(os.path.join(out_dir,"14_FAILURE_THRESHOLD_SENSITIVITY.svg"),"w",encoding="utf-8") as f:f.write(svg("Sensitivity of failure classification","Failure rate when the consecutive-shortage threshold changes from 2 to 6 months",b,"This changes the diagnostic classification only; simulated decisions and objective values are unchanged."))
+    b+=txt(510,575,"X: Consecutive-shortage threshold (months)",12,bold=True)+txt(28,315,"Y: Classified failure rate (0-1)",11,rotate=-90)
+    with open(os.path.join(out_dir,"14_FAILURE_THRESHOLD_SENSITIVITY.svg"),"w",encoding="utf-8") as f:f.write(svg("Sensitivity of failure classification","X = consecutive-shortage threshold (months); Y = classified failure rate (ratio)",b,"This changes the diagnostic classification only; simulated decisions and objective values are unchanged."))
 
     outputs=["105_FAILURE_DECOMPOSITION.csv","106_PRACTICAL_SIGNIFICANCE.csv","107_OOS_GROUP_VALIDATION.csv","108_OOS_STRATIFIED_FOLDS.csv","109_FAILURE_THRESHOLD_SENSITIVITY.csv","11_FAILURE_DECOMPOSITION.svg","12_PRACTICAL_EFFECT_WATERFALL.svg","13_HELD_OUT_VALIDATION.svg","14_FAILURE_THRESHOLD_SENSITIVITY.svg"]
     audit={"source_runs":len(run_rows),"reconstructed_fail_mismatches":mismatch,"valid_failure_reconstruction":mismatch==0,"group_holdouts":len(oos),"stratified_folds":len(folds),"outputs":{}}

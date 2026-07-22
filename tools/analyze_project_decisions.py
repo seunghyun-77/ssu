@@ -10,7 +10,9 @@ def write(path, fields, data):
 def e(x):return html.escape(str(x))
 def svg(title,subtitle,body):
     return f'<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620"><rect width="100%" height="100%" fill="white"/><text x="45" y="38" font-family="sans-serif" font-size="22" font-weight="bold" fill="#16222e">{e(title)}</text><text x="45" y="62" font-family="sans-serif" font-size="13" fill="#536273">{e(subtitle)}</text>{body}</svg>'
-def txt(x,y,s,size=12,anchor="middle",color="#25313c",bold=False):return f'<text x="{x:.1f}" y="{y:.1f}" font-family="sans-serif" font-size="{size}" text-anchor="{anchor}" fill="{color}" font-weight="{"bold" if bold else "normal"}">{e(s)}</text>'
+def txt(x,y,s,size=12,anchor="middle",color="#25313c",bold=False,rotate=None):
+    transform=f' transform="rotate({rotate} {x} {y})"' if rotate is not None else ""
+    return f'<text x="{x:.1f}" y="{y:.1f}" font-family="sans-serif" font-size="{size}" text-anchor="{anchor}" fill="{color}" font-weight="{"bold" if bold else "normal"}"{transform}>{e(s)}</text>'
 def rect(x,y,w,h,c,stroke="none"):return f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" fill="{c}" stroke="{stroke}"/>'
 def line(x1,y1,x2,y2,c="#dce2e8",w=1):return f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{c}" stroke-width="{w}"/>'
 
@@ -46,7 +48,8 @@ def main(data_dir,out_dir):
     top=sorted(cmp,key=lambda r:abs(float(r["start_rate_difference"])),reverse=True)[:15];mx=max(abs(float(r["start_rate_difference"])) for r in top) or 1;b="";zero=500
     for i,r in enumerate(top):
         y=100+i*31;v=float(r["start_rate_difference"]);width=360*abs(v)/mx;color="#0B8F55" if v>=0 else "#D24A4A";x=zero if v>=0 else zero-width;b+=txt(125,y+5,r["project_id"],11,"start",color,True)+line(zero,y-11,zero,y+12,"#8b98a5")+rect(x,y-8,width,17,color)+txt(zero+(width+8)*(1 if v>=0 else -1),y+5,f"{v:+.3f}",10,"start" if v>=0 else "end",color)
-    with open(os.path.join(out_dir,"08_PROJECT_START_DIFFERENCE.svg"),"w",encoding="utf-8") as f:f.write(svg("Largest project start-rate differences: P8 versus P0","Positive bars indicate projects started more often under preemptive hiring",b))
+    b+=txt(500,580,"X: P8 - P0 start-rate difference (probability points)",12,bold=True)+txt(35,320,"Y: Candidate projects",11,"middle",rotate=-90)
+    with open(os.path.join(out_dir,"08_PROJECT_START_DIFFERENCE.svg"),"w",encoding="utf-8") as f:f.write(svg("Largest project start-rate differences: P8 versus P0","X = probability-point difference; Y = candidate project; green means P8 starts more often",b))
 
     b="";stages=[("Observed",1.0),("Proposed",None),("Started",None)]
     for col,pid in enumerate(("P0","P8")):
@@ -54,7 +57,8 @@ def main(data_dir,out_dir):
         for i,(label,_) in enumerate(stages):
             width=260*vals[i];x=cx-width/2;y=140+i*125;color="#4E79A7" if pid=="P0" else "#0B8F55";b+=rect(x,y,width,65,color)+txt(cx,y+29,label,13,color="white",bold=True)+txt(cx,y+50,f"{vals[i]*100:.1f}%",12,color="white")
             if i<2:b+=line(cx,y+65,cx,y+120,"#9aa6b2",2)
-    with open(os.path.join(out_dir,"09_EXTERNAL_PROJECT_FUNNEL.svg"),"w",encoding="utf-8") as f:f.write(svg("External-project decision funnel","Probability-weighted rates across all external candidates and scenarios",b))
+    b+=txt(500,555,"X: Policy panel (P0, P8)",12,bold=True)+txt(500,578,"Y/flow: observed -> proposed -> started; labels are weighted candidate shares (%)",11)
+    with open(os.path.join(out_dir,"09_EXTERNAL_PROJECT_FUNNEL.svg"),"w",encoding="utf-8") as f:f.write(svg("External-project decision funnel","Panel X = policy; vertical flow = lifecycle stage; width and labels = candidate share (%)",b))
 
     groups=sorted({r["scenario_group"] for r in gs});types=("INTERNAL","EXTERNAL");lookup={(r["scenario_group"],r["policy_id"],r["project_type"]):float(r["start_rate"]) for r in gs};vals={(g,t):lookup[(g,"P8",t)]-lookup[(g,"P0",t)] for g in groups for t in types};mx=max(abs(v) for v in vals.values()) or 1;b="";x0,y0,cw,ch=410,115,210,58
     for j,t in enumerate(types):b+=txt(x0+j*cw+cw/2,98,t,13,bold=True)
@@ -62,7 +66,8 @@ def main(data_dir,out_dir):
         b+=txt(x0-18,y0+i*ch+35,g,11,"end",bold=True)
         for j,t in enumerate(types):
             v=vals[(g,t)];q=min(abs(v)/mx,1);base=(11,143,85) if v>=0 else (210,66,66);rgb=tuple(round(245+(c-245)*q) for c in base);c="#%02x%02x%02x"%rgb;b+=rect(x0+j*cw,y0+i*ch,cw-4,ch-4,c,"white")+txt(x0+j*cw+cw/2,y0+i*ch+34,f"{v:+.3f}",12,color="white" if q>.5 else "#25313c",bold=True)
-    with open(os.path.join(out_dir,"10_SCENARIO_PROJECT_ACTIVATION.svg"),"w",encoding="utf-8") as f:f.write(svg("Scenario-specific project activation: P8 minus P0","Difference in probability-weighted start rate by project type",b))
+    b+=txt(x0+cw,550,"X: Project type",12,bold=True)+txt(175,y0+3.5*ch,"Y: Scenario group",12,rotate=-90)+txt(x0+cw,575,"Cell: P8 - P0 start-rate difference (probability points)",11)
+    with open(os.path.join(out_dir,"10_SCENARIO_PROJECT_ACTIVATION.svg"),"w",encoding="utf-8") as f:f.write(svg("Scenario-specific project activation: P8 minus P0","X = project type; Y = scenario group; cell = weighted start-rate difference",b))
 
     outputs=["102_PROJECT_POLICY_SUMMARY.csv","103_PROJECT_SCENARIO_SUMMARY.csv","104_PROJECT_P8_VS_P0.csv","08_PROJECT_START_DIFFERENCE.svg","09_EXTERNAL_PROJECT_FUNNEL.svg","10_SCENARIO_PROJECT_ACTIVATION.svg"]
     audit={"source_rows":count,"expected_rows":2660000,"valid_row_count":count==2660000,"violations":dict(viol),"valid_logic":not any(viol.values()),"outputs":{}}

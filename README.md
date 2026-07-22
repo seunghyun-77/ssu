@@ -34,3 +34,7 @@ million candidate-project decision traces. Its main interpretation is in
 Failure decomposition, practical significance, and held-out policy-selection
 validation are documented in
 `experiment_output_project/DISSERTATION_ROBUSTNESS_RESULTS_KO.md`.
+
+Axis meanings, units, legends, overlap corrections, and result interpretations
+for all 14 figures are documented in
+`experiment_output_project/FIGURE_AXIS_AND_INTERPRETATION_KO.md`.
